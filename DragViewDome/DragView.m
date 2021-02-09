@@ -8,7 +8,20 @@
 #import "DragView.h"
 
 @implementation DragView
-
+// 由文件加载而来（nib,storyboard）
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        
+    }
+    return self;
+}
+//加载完成后执行
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    self.layer.cornerRadius = CGRectGetHeight(self.frame)/2.0f;
+}
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     NSLog(@"%s",__func__);
     NSLog(@"%@",NSStringFromCGRect(self.frame));
